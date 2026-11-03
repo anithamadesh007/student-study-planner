@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>StudyFlow | Student Planner</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Decorative background -->
+
+    <div class="cloud cloud-one"></div>
+    <div class="cloud cloud-two"></div>
+
+    <div class="app">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <div class="logo-area">
+
+                <div class="logo">
+                    🏹
+                </div>
+
+                <div>
+                    <h1>StudyFlow</h1>
+                    <p>Student Planner</p>
+                </div>
+
+            </div>
+
+            <div class="character-box">
+
+                <img
+                    src="assets/bheem.png"
+                    alt="Student mascot"
+                    class="mascot"
+                >
+
+                <h3>Study Like a Hero!</h3>
+
+                <p>
+                    Finish your assignments,
+                    one task at a time.
+                </p>
+
+            </div>
+
+            <nav>
+
+                <a href="#dashboard" class="nav-link active">
+                    🏠 Dashboard
+                </a>
+
+                <a href="#assignments" class="nav-link">
+                    📚 Assignments
+                </a>
+
+                <a href="#subjects" class="nav-link">
+                    📖 Subjects
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <div class="quote">
+                    <span>💡</span>
+
+                    <p>
+                        "Learn today,
+                        become stronger tomorrow!"
+                    </p>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN -->
+
+        <main class="main">
+
+            <!-- HEADER -->
+
+            <header class="header" id="dashboard">
+
+                <div>
+
+                    <span class="small-title">
+                        ✨ WELCOME BACK, STUDENT
+                    </span>
+
+                    <h2>
+                        My Study
+                        <span>Adventure</span>
+                    </h2>
+
+                    <p>
+                        Manage your subjects,
+                        assignments and deadlines.
+                    </p>
+
+                </div>
+
+                <div class="header-right">
+
+                    <div class="today">
+                        📅
+                        <span id="todayDate"></span>
+                    </div>
+
+                    <button
+                        class="add-btn"
+                        id="addAssignmentBtn"
+                    >
+                        + Add Assignment
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- STATISTICS -->
+
+            <section class="stats">
+
+                <div class="stat-card purple">
+
+                    <div class="stat-icon">
+                        📚
+                    </div>
+
+                    <div>
+                        <p>Total Assignments</p>
+                        <h3 id="totalCount">0</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card orange">
+
+                    <div class="stat-icon">
+                        ⏰
+                    </div>
+
+                    <div>
+                        <p>Pending</p>
+                        <h3 id="pendingCount">0</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card blue">
+
+                    <div class="stat-icon">
+                        🚀
+                    </div>
+
+                    <div>
+                        <p>In Progress</p>
+                        <h3 id="progressCount">0</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card green">
+
+                    <div class="stat-icon">
+                        🏆
+                    </div>
+
+                    <div>
+                        <p>Completed</p>
+                        <h3 id="completedCount">0</h3>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ASSIGNMENTS -->
+
+            <section
+                class="assignment-section"
+                id="assignments"
+            >
+
+                <div class="section-header">
+
+                    <div>
+                        <span class="small-title">
+                            📋 YOUR TASKS
+                        </span>
+
+                        <h2>
+                            Assignment Board
+                        </h2>
+                    </div>
+
+                    <button
+                        class="subject-btn"
+                        id="addSubjectBtn"
+                    >
+                        + Add Subject
+                    </button>
+
+                </div>
+
+
+                <!-- SEARCH -->
+
+                <div class="toolbar">
+
+                    <div class="search">
+
+                        <span>🔍</span>
+
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Search assignment or subject..."
+                        >
+
+                    </div>
+
+
+                    <div class="filters">
+
+                        <button
+                            class="filter active"
+                            data-status="All"
+                        >
+                            All
+                        </button>
+
+                        <button
+                            class="filter"
+                            data-status="Pending"
+                        >
+                            Pending
+                        </button>
+
+                        <button
+                            class="filter"
+                            data-status="In Progress"
+                        >
+                            In Progress
+                        </button>
+
+                        <button
+                            class="filter"
+                            data-status="Completed"
+                        >
+                            Completed
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ASSIGNMENT LIST -->
+
+                <div
+                    id="assignmentList"
+                    class="assignment-list"
+                >
+                    Loading...
+                </div>
+
+            </section>
+
+
+            <!-- SUBJECTS -->
+
+            <section
+                class="subjects"
+                id="subjects"
+            >
+
+                <div class="section-header">
+
+                    <div>
+                        <span class="small-title">
+                            📚 ORGANIZE
+                        </span>
+
+                        <h2>
+                            My Subjects
+                        </h2>
+                    </div>
+
+                </div>
+
+                <div
+                    id="subjectList"
+                    class="subject-list"
+                ></div>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer>
+
+                <p>
+                    StudyFlow © 2026
+                </p>
+
+                <p>
+                    Made with ❤️ for students
+                </p>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+    <!-- ASSIGNMENT MODAL -->
+
+    <div
+        class="modal-bg"
+        id="assignmentModal"
+    >
+
+        <div class="modal">
+
+            <button
+                class="close"
+                id="closeAssignment"
+            >
+                ×
+            </button>
+
+            <div class="modal-title">
+                🏹
+            </div>
+
+            <span class="small-title">
+                NEW MISSION
+            </span>
+
+            <h2>
+                Add Assignment
+            </h2>
+
+            <p>
+                Add your next study task.
+            </p>
+
+            <form id="assignmentForm">
+
+                <label>
+                    Subject
+                </label>
+
+                <select
+                    id="subjectSelect"
+                    required
+                >
+                    <option value="">
+                        Select Subject
+                    </option>
+                </select>
+
+
+                <label>
+                    Assignment Name
+                </label>
+
+                <input
+                    type="text"
+                    id="assignmentTitle"
+                    placeholder="Example: HTML Forms"
+                    required
+                >
+
+
+                <div class="two-columns">
+
+                    <div>
+
+                        <label>
+                            Deadline
+                        </label>
+
+                        <input
+                            type="date"
+                            id="assignmentDeadline"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <label>
+                            Status
+                        </label>
+
+                        <select id="assignmentStatus">
+
+                            <option value="Pending">
+                                Pending
+                            </option>
+
+                            <option value="In Progress">
+                                In Progress
+                            </option>
+
+                            <option value="Completed">
+                                Completed
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                >
+                    Add Assignment ✨
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- SUBJECT MODAL -->
+
+    <div
+        class="modal-bg"
+        id="subjectModal"
+    >
+
+        <div class="modal small">
+
+            <button
+                class="close"
+                id="closeSubject"
+            >
+                ×
+            </button>
+
+            <div class="modal-title">
+                📚
+            </div>
+
+            <span class="small-title">
+                NEW SUBJECT
+            </span>
+
+            <h2>
+                Add Subject
+            </h2>
+
+            <p>
+                Create a new study subject.
+            </p>
+
+            <form id="subjectForm">
+
+                <label>
+                    Subject Name
+                </label>
+
+                <input
+                    type="text"
+                    id="subjectName"
+                    placeholder="Example: Computer Networks"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                >
+                    Create Subject ✨
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOAST -->
+
+    <div
+        class="toast"
+        id="toast"
+    >
+        ✓
+        <span id="toastText">
+            Success
+        </span>
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
